@@ -34,8 +34,20 @@
 
 ### Задание 8-9. ping и dig
 ![Ping](screenshots/image_2026-03-05_06-05-49.png)
+![Ping](screenshots/image_2026-03-05_06-07-40)
 
-Разбор вывода `dig`:
-* **QUESTION SECTION:** `;qwerty988.ai-info.ru. IN A` - запрос A-записи для домена.
-* **ANSWER SECTION:** `qwerty988.ai-info.ru. 199 IN A 89.208.84.180` - ответ с IP-адресом сервера.
-* **SERVER:** `127.0.0.53#53` - адрес локального DNS-резол
+* **QUESTION SECTION:** `;qwerty988.ai-info.ru. IN A` - что спросили.
+* **ANSWER SECTION:** `qwerty988.ai-info.ru. 199 IN A 89.208.84.180` - ответ сервера.
+* **SERVER:** `127.0.0.53#53` - кто овтетил.
+
+### Задание 10. dig +trace
+1. **Корень (`.`):** обращение к корневым серверам (ru).
+2. **Зона `.ru`:** получение адресов серверов, обслуживающих зону RU.
+3. **NS-серверы `ai-info.ru`:** получение данных о домене второго уровня.
+4. **A-запись:** получение ip от vk_cloud.
+
+![dig +trace](screenshots/image_2026-03-05_06-09-30.png)
+
+
+### Задание 11. Сайт по домену
+![Browser Domain](screenshots/image_2026-03-05_06-10-55.png) 
