@@ -69,3 +69,4 @@ IP: 89.208.84.180, Метод: GET, Путь: /, Код: 200, User-Agent: curl/8
 
 Задание 14: Фильтрация логов
 14-log-stats.png
+15-pull-request.png
