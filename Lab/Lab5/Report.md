@@ -63,3 +63,5 @@ HSTS - механизм, который говорит браузеру испо
 
 Задание 13. Автообновление
 ![14-renew.png](./screenshots/14-renew.png)
+
+![15-pull-request.png](./screenshots/15-pull-request.png)
