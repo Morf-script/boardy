@@ -1,0 +1,44 @@
+server {
+    server_name qwerty988.ai-info.ru;
+    root /var/www/boardy;
+    index index.html;
+    
+    add_header Strict-Transport-Security "max-age=31536000" always;    
+
+    location ~* \.(jpg|jpeg|png|gif|ico|css|js)$ {
+        expires 30d;
+        add_header Cache-Control "public, no-transform";
+    }
+
+    gzip on;
+    gzip_types text/plain text/css application/javascript application/json image/svg+xml;
+    gzip_proxied any;
+
+    access_log /var/log/nginx/boardy-access.log;
+    error_log /var/log/nginx/boardy-error.log;
+
+    error_page 404 /404.html;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/qwerty988.ai-info.ru/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/qwerty988.ai-info.ru/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+}
+server {
+    if ($host = qwerty988.ai-info.ru) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+    listen 80;
+    server_name qwerty988.ai-info.ru;
+    return 404; # managed by Certbot
+
+
+}
