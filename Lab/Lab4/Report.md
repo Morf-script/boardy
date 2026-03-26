@@ -1,0 +1,72 @@
+# Лабораторная работа №4: HTTP
+**Студент:** Колганов Илья Л-01
+
+Часть A. Виртуальный хост основного сайта
+![01-directory.png](./screenshots/01-directory.png)
+
+Описание директив:
+
+    server_name: Указывает доменное имя.
+
+    root: Задает корневую директорию на сервере.
+
+    access_log: Путь к файлу с данными о посещениях.
+
+    error_log: Путь к файлу с ошибками сервера.
+
+    try_files: Проверка наличия файлов для выдачи ошибки.
+
+    error_page: отображение кастомной страницы для ошибки.
+
+![02-vhost-config.png](./screenshots/02-vhost-config.png)
+
+Часть B. Страницы проекта
+![03-landing.png](./screenshots/03-landing.png)
+![04-form.png](./screenshots/04-form.png)
+![05-404.png](./screenshots/05-404.png)
+
+Часть C. Второй виртуальный хост - API
+![06-dns-api.png](./screenshots/06-dns-api.png)
+![07-dig-api.png](./screenshots/07-dig-api.png)
+![08-api-config.png](./screenshots/08-api-config.png)
+![09-api-browser.png](./screenshots/09-api-browser.png)
+
+Часть D. Исследование HTTP
+Задание 9: GET-запрос через curl -v
+![10-curl-v.png](./screenshots/10-curl-v.png)
+
+    Метод: GET, Путь: /, Версия: HTTP/1.1.
+
+    Host: qwerty988.ai-info.ru.
+
+    Код ответа: 200 OK.
+
+    Content-Type: text/html.
+
+    Content-Length: 369.
+
+Задание 10: Виртуальные хосты в действии
+![11-vhosts.png](./screenshots/11-vhosts.png)
+Один ip возвращает разные страницы, так как определяется нужный сайт по заголовку host в запросе. Третий запрос вернул основной сайт, так как nginx отдал конфигурацию по умолчанию.
+
+Задание 11: POST-запрос
+![12-post-405.png](./screenshots/12-post-405.png)
+
+    Код ответа: 405 Method Not Allowed.
+
+    Причина: c nginx нельзя использовать метод POST для статических html-файлов.
+
+Задание 12: HEAD-запрос
+HEAD возвращает только заголовки без тела ответа. Используется для проверки даты изменения, размера и тд без скачивания всего файла.
+
+Часть E. Логи
+Задание 13: Раздельные логи
+![13-logs.png](./screenshots/13-logs.png)
+Пример строки лога:
+89.208.84.180 - - [19/Mar/2026:02:52:00 +0300] "GET / HTTP/1.1" 200 285 "-" "curl/8.5.0"
+
+IP: 89.208.84.180, Метод: GET, Путь: /, Код: 200, User-Agent: curl/8.5.0.
+
+Задание 14: Фильтрация логов
+![14-log-stats.png](./screenshots/14-log-stats.png)
+![15-pull-request.png](./screenshots/15-pull-request.png)

@@ -1,0 +1,13 @@
+server {
+    listen 80;
+    server_name api.qwerty988.ai-info.ru;
+    root /var/www/boardy-api;
+    index index.html;
+
+    access_log /var/log/nginx/api-access.log;
+    error_log /var/log/nginx/api-error.log;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+}
